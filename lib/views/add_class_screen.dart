@@ -66,10 +66,13 @@ class _AddClassState extends State<AddClass> {
       final List<dynamic> data = json.decode(response.body);
       for (var classEntry in data) {
         if (classEntry['classname'] == className) {
+          print(classEntry['id']);
           return classEntry['id'] as int;
+
         }
       }
     }
+    print("returning null");
     return null;
   }
 

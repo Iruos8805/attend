@@ -154,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
         });
 
       },
-      child: SingleChildScrollView( child: SizedBox(
+      child:  SizedBox(
           width: double.infinity,
           child: Text(
             "Login",
@@ -167,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
         onPrimary: Colors.blue,
         padding: const EdgeInsets.symmetric(vertical: 16),
       ),
-    ),);
+    );
   }
   Widget _extraText() {
     return InkWell(
