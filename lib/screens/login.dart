@@ -1,6 +1,8 @@
 import 'package:attendence_tracker/constants.dart';
+import 'package:attendence_tracker/home_screen.dart';
 import 'package:attendence_tracker/screens/database_sql.dart';
 import 'package:attendence_tracker/screens/sign_up.dart';
+import 'package:attendence_tracker/views/student_page.dart';
 import 'package:flutter/material.dart';
 
 import 'dart:convert';
@@ -31,18 +33,23 @@ class _LoginPageState extends State<LoginPage> {
     await sqliteService.initializeDB();
   }
 
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
-        begin: Alignment.topRight,
-        end: Alignment.bottomLeft,
-        colors: [
-          kpurple,
-          kviolet,
-        ],
-      )),
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              kpurple,
+              kviolet,
+            ],
+          )),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: _page(),
@@ -121,18 +128,33 @@ class _LoginPageState extends State<LoginPage> {
           if (response.statusCode == 200) {
             debugPrint("Login success");
             debugPrint("Response: ${response.body}");
+
+
             Map<String, dynamic> jsonResponse =
-                jsonDecode(response.body) as Map<String, dynamic>;
+            jsonDecode(response.body) as Map<String, dynamic>;
             sqliteService.insertOrUpdateRecord(1, jsonResponse["token"]);
+            String token = jsonResponse["token"];
+            bool isStudent = jsonResponse["is_student"];
+
+            if (isStudent) {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => StudentPage()));
+            } else {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            }
+
 
           } else {
             debugPrint("User Data: $jsonUserData");
             debugPrint("Status code: ${response.statusCode}");
             debugPrint("Login failed");
+
           }
+
+
         });
+
       },
-      child: const SizedBox(
+      child: SingleChildScrollView( child: SizedBox(
           width: double.infinity,
           child: Text(
             "Login",
@@ -145,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
         onPrimary: Colors.blue,
         padding: const EdgeInsets.symmetric(vertical: 16),
       ),
-    );
+    ),);
   }
   Widget _extraText() {
     return InkWell(

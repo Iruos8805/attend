@@ -23,7 +23,7 @@ class _QRViewExampleState extends State<QRViewExample> {
   SqliteService sqliteService = SqliteService();
   String? storedToken;
   String? user_namepos;
-
+  String c_ode = '';
   @override
   void initState() {
     super.initState();
@@ -82,7 +82,7 @@ class _QRViewExampleState extends State<QRViewExample> {
           "time": DateTime.now().toUtc().toIso8601String(),
           "uid": user_namepos, // Use the extracted UID
           "name": "some_value", // Replace with the actual name value
-          "teacher_qrpost": null
+          "teacher_qrpost": 1,
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -249,9 +249,12 @@ class _QRViewExampleState extends State<QRViewExample> {
       if (result != null) {
         print("Result");
         print(result!.code);
+        setState(() {
+          c_ode = result as String;
+        });
 
+        postDataToDjango(c_ode, user_namepos!);
 
-        postDataToDjango(result, user_namepos);
       }
     });
   }
