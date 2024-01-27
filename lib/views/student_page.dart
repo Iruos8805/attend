@@ -78,7 +78,7 @@ class _StudentPageState extends State<StudentPage> {
                   width: 200,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => GenerateQRPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => QRViewExample()));
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.purple,
