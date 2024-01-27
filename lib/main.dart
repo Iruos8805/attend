@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         // The useMaterial3 property is not available in ThemeData
         // If you're using the latest Flutter version, it's not necessary.
       ),
-      home: QRViewExample(),
+      home: SplashScreen(),
     );
   }
 }
