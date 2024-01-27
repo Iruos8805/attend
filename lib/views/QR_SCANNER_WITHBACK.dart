@@ -228,9 +228,6 @@ class _QRViewExampleState extends State<QRViewExample> {
 
 
 
-SOURI S
-Fri, 26 Jan, 22:27 (13 hours ago)
-to me
 
 Future<void> authTokenUserInfo(String token) async {
 String apiUrl = 'https://sabarixr.pythonanywhere.com/api/student-only/';
