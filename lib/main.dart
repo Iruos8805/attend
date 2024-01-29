@@ -1,31 +1,27 @@
-import 'package:attendence_tracker/home_screen.dart';
-import 'package:attendence_tracker/screens/login.dart';
-import 'package:attendence_tracker/screens/sign_up.dart';
-import 'package:attendence_tracker/screens/splash_screen.dart';
-import 'package:attendence_tracker/views/QR_SCANNER_WITHBACK.dart';
-
-import 'package:attendence_tracker/views/student_page.dart';
-import 'package:attendence_tracker/views/teacher_page.dart';
-import 'package:attendence_tracker/widgets/generate_qr_button.dart';
-import 'package:attendence_tracker/widgets/qr_scanner.dart';
 import 'package:flutter/material.dart';
+import 'package:samplew/screens/course_screen.dart';
+import 'package:samplew/screens/login/splash_screen.dart';
+import 'package:samplew/screens/welcome_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // The useMaterial3 property is not available in ThemeData
-        // If you're using the latest Flutter version, it's not necessary.
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
